@@ -29,7 +29,7 @@ class DioHelper {
     return await dio.get(
       'recipes/complexSearch',
       queryParameters: {
-        'apiKey':'a68349fc14574d3eb07067130ae6bd07',
+        'apiKey':'6200227c3a7347d8870f125cf5f11b41',
         'query':'pasta',
       }
     );
@@ -39,7 +39,7 @@ class DioHelper {
     return await dio.get(
         'recipes/$id/information',
         queryParameters: {
-          'apiKey':'a68349fc14574d3eb07067130ae6bd07',
+          'apiKey':'6200227c3a7347d8870f125cf5f11b41',
           'query':'pasta',
         }
     );

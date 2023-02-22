@@ -6,15 +6,14 @@ import 'package:food_recipe_app/modules/favourites.dart';
 import 'package:food_recipe_app/modules/recipe.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
+  int? currentIndex;
+  HomeScreen({this.currentIndex});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int currentIndex = 0;
   static RecipeModel? recipeModel;
   Map<int,bool> favourites = {};
   List<String> titles = ['Food List', 'Favourite Recipe', 'Hello World', 'Hello World', 'Hello World',];
@@ -57,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         title: Text(
-          titles[currentIndex],
+          titles[widget.currentIndex!],
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.teal,
@@ -81,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
             return Center(child: CircularProgressIndicator());
           }else {
             List<Widget> screens = [RecipeScreen(recipeModel: recipeModel!,), const FavouritesScreen(), const Center(child: Text('Hello World',style: TextStyle(color: Colors.teal,fontSize: 30,fontWeight: FontWeight.w600,),),), const Center(child: Text('Hello World',style: TextStyle(color: Colors.teal,fontSize: 30,fontWeight: FontWeight.w600,),),), const Center(child: Text('Hello World',style: TextStyle(color: Colors.teal,fontSize: 30,fontWeight: FontWeight.w600,),),),];
-            return screens[currentIndex];
+            return screens[widget.currentIndex!];
           }
         },
       ),
@@ -99,10 +98,10 @@ class _HomeScreenState extends State<HomeScreen> {
           color: Colors.black,
         ),
         elevation: 15,
-        currentIndex: currentIndex,
+        currentIndex: widget.currentIndex!,
         onTap: (index) {
           setState(() {
-            currentIndex = index;
+            widget.currentIndex = index;
           });
         },
         items:const [
